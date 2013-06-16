@@ -1,0 +1,19 @@
+.page-header
+  %h1 Список тем
+.btn-toolbar
+  =link_to "Новая тема",new_topic_path,class:'btn'
+%table.table.table-bordered
+  %thread
+    %tr
+      %th=Topic.human_attribute_name(:name)
+      %th=Topic.human_attribute_name(:updated_at)
+      %th=Topic.human_attribute_name(:action_on)
+  %tbody
+  - @topics.each do |topic|
+    %tr
+      %td=link_to topic.name,topic
+      %td=l(topic.updated_at)
+      %td=link_to "Показать", topic,class:'btn'
+      %td=link_to "Редактировать", edit_topic_path(topic),class:'btn'
+      %td=link_to "Удалить", topic, :method => :delete, :data => { :confirm => 'Уверены?' },class:'btn'
+=paginate @topics

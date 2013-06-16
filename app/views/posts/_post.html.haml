@@ -1,0 +1,16 @@
+.post{ :style => "background: #{post.user.setting.bg_color};"}
+  .title
+    =post.user.username
+    .pull-right=l(post.created_at,format: :long)
+    .clearfix
+  .body{ :style => "font-family: #{post.user.setting.font}; color: #{post.user.setting.font_color}; font-size: #{post.user.setting.font_size}; text-decoration: #{post.user.setting.decoration};"}=post.body
+  =post.user.setting.caption
+%table
+  -if post.edit?(current_user)
+    .btn-toolbar
+      =link_to edit_topic_post_path(@topic,post),class: 'btn btn-mini' do
+        %i.icon-edit
+        Редактировать
+      =link_to [@topic,post],class: 'btn btn-mini',data:{method: :delete,confirm:"Вы уверены?"} do
+        %i.icon-trash
+        Удалить

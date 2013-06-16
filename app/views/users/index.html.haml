@@ -1,0 +1,27 @@
+%h1 Пользователи
+
+%table
+  %tr
+    %th Имя
+    %th Пароль
+    %th Salt
+    %th Email
+    %th Роль
+    %th
+    %th
+    %th
+
+  - @users.each do |user|
+    %tr
+      %td= user.username
+      %td= user.password
+      %td= user.salt
+      %td= user.email
+      %td= user.role
+      %td= link_to 'Show', user, class: 'btn btn-inverse'
+      %td= link_to 'Edit', edit_user_path(user), class: 'btn btn-inverse'
+      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-inverse'
+
+%br
+
+= link_to 'New User', new_user_path, class: 'btn btn-primary'

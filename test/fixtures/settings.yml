@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  font: MyString
+  font_color: MyString
+  bg_color: MyString
+  font_size: MyString
+
+two:
+  font: MyString
+  font_color: MyString
+  bg_color: MyString
+  font_size: MyString

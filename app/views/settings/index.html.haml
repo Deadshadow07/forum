@@ -1,0 +1,27 @@
+%h1 Listing settings
+
+%table
+  %tr
+    %th Font
+    %th Font color
+    %th Bg color
+    %th Font size
+    %th User id
+    %th
+    %th
+    %th
+
+  - @settings.each do |setting|
+    %tr
+      %td= setting.font
+      %td= setting.font_color
+      %td= setting.bg_color
+      %td= setting.font_size
+      %td= user_id
+      %td= link_to 'Просмотр', setting
+      %td= link_to 'Edit', edit_setting_path(setting)
+      %td= link_to 'Destroy', setting, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Setting', new_setting_path

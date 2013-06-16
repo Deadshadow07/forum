@@ -1,0 +1,35 @@
+-if @user.errors.any?
+  #error_explanation
+    %h2= "Настройки Профиля"
+%h3= "Стиль"
+%div
+=@user.setting.inspect
+=form_for @user.setting, :url => update_profile_path, :html => {:multipart => true} do |f|
+  .field
+    = f.label :font
+    = f.select :font, ([["Выбрать", "0"],["Arial"],["Comic Sans MS"],["Pompadur"],["sans-serif"],["cursive"],["fantasy"],["monospace"],["Times New Roman"]])
+
+
+    = f.label :font_color
+    = f.text_field :font_color
+
+
+    = f.label :bg_color
+    = f.text_field :bg_color
+
+
+    = f.label :font_size
+    = f.text_field :font_size
+
+
+    = f.label :decoration
+    = f.select :decoration,([["Выбрать", "0"],["Подчёркивание", "underline"],["Мигающий","blink"],["Линия над текстом", "overline"]])
+
+
+    =f.label :caption
+    =f.text_field :caption
+  .actions
+    = f.submit 'Сохранить', class: 'btn btn-warning'
+
+= link_to 'Back', users_path, class: 'btn btn-warning'
+

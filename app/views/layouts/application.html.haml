@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{:charset=>'utf-8'}
+    %title Форум
+    =stylesheet_link_tag :application
+    =javascript_include_tag :application
+    =csrf_meta_tags
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %ul.nav
+            -if !logged_in?
+              %li=link_to "Регистрация", new_user_path
+          %ul.nav.pull-right
+            -if logged_in?
+              %btn-group
+              %li.dropdown
+                =link_to '#', data: {toggle: "dropdown"}, class: 'btn-primary dropdown-toggle' do
+                  %i.icon-user.icon-white
+                  =current_user.username
+                  %b.caret
+                %ul.dropdown-menu
+                  %i.icon-home
+                  =link_to "Главная", users_path
+                  %br
+                  %i.icon-list-alt
+                  =link_to "Форум", topics_path
+                  %li.divider
+                  %i.icon-pencil
+                  =link_to "Настройки", edit_user_path(current_user.id)
+                  %br
+                  %i.icon-off
+                  =link_to "Выход", logout_path
+            -else
+              %li=link_to 'Войти',login_path
+  .container
+    .row=render 'layouts/flash_messages'
+    =yield
+
+
+
+
+
+
+

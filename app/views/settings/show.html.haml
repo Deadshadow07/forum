@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Font:
+  = @setting.font
+%p
+  %b Font color:
+  = @setting.font_color
+%p
+  %b Bg color:
+  = @setting.bg_color
+%p
+  %b Font size:
+  = @setting.font_size
+
+= link_to 'Edit', edit_setting_path(@setting)
+\|
+= link_to 'Back', settings_path

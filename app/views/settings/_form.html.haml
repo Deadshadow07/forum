@@ -1,0 +1,22 @@
+= form_for @setting do |f|
+  - if @setting.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@setting.errors.count, "error")} prohibited this setting from being saved:"
+      %ul
+        - @setting.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :font
+    = f.text_field :font
+  .field
+    = f.label :font_color
+    = f.text_field :font_color
+  .field
+    = f.label :bg_color
+    = f.text_field :bg_color
+  .field
+    = f.label :font_size
+    = f.text_field :font_size
+  .actions
+    = f.submit 'Сохранить'
